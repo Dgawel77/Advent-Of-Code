@@ -1,0 +1,1 @@
+header = 'Python\\Advent-Of-Code\\2021\\Input\\Day1input.txt'
