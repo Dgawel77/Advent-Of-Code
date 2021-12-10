@@ -15,13 +15,12 @@ def Validation(line):
             stack.append(c)
         else:
             stack.pop()
-    additions = []
-    for c in stack[::-1]:
-        additions.append(otherSide[c])
+    
+    stack = list(map(lambda x: otherSide[x], stack))
 
     score = 0
-    characterScore = {')': 1, '}': 3, ']': 2, '>': 4}
-    for c in additions:
+    characterScore = {')': 1, ']': 2, '}': 3, '>': 4}
+    for c in stack[::-1]:
         score *= 5
         score += characterScore[c]
     scores.append(score)
@@ -41,13 +40,7 @@ def isCorrupt(line):
     return False
 
 
-remove = []
-for s in lines:
-    if isCorrupt(s):
-        remove.append(s)
-
-for r in remove:
-    lines.remove(r)
+lines = filter(lambda x: not isCorrupt(x), lines)
 
 for s in lines:
     Validation(s)
