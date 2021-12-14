@@ -15,9 +15,9 @@ def dotprint():
         print()
         for x in range(minx, maxx+1):
             if (x, y) in dots:
-                print('#', end='')
+                print('█', end='')
             else:
-                print('.', end='')
+                print(' ', end='')
 
 
 def fold(side, number):
