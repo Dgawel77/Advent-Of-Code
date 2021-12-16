@@ -1,54 +1,39 @@
-from typing import Deque
+# this code is based off of
+# https://github.com/ephemient/aoc2021/blob/main/py/aoc2021/day15.py
+# I used the dijkstra algorithm to find the shortest path
+# my first iteration in day one was not very good and took a long time
+# this solution is cleaner and faster
 
 with open('Python\\Advent-Of-Code\\2021\\Input\\Day15input.txt') as f:
-    lines = list(map(lambda x: [int(c) for c in x], f.read().split("\n")))
+    lines = f.readlines()
 
-class dijkstra:
-    def __init__(self, g, height, width):
-        self.g = g
-        self.spt = dict.fromkeys(g.keys(), float('inf'))
-        self.spt[(0, 0)] = 0
-        self.visited = set()
-        self.height = height
-        self.width = width
-        
-    def bfs(self, r, c):
-        queue = Deque([(r, c)])
-        while len(queue) > 0:
-            r, c = queue.popleft()
-            self.visited.add((r,c))
-            next = [(r, c+1), (r+1, c), (r, c-1), (r-1, c)]
-            for nr, nc in next:
-                if 0 <= nr < self.height and 0 <= nc < self.width:
-                    self.spt[(nr, nc)] = min(self.spt[(nr, nc)], self.spt[(r,c)] + self.g[(nr, nc)])
-                    if (nr, nc) not in self.visited:
-                        queue.append((nr, nc))
+import heapq
+import math
 
-    def dijkstra(self, sr, sc, tr, tc):
-        self.bfs(sr, sc)
-        return self.spt[(tr, tc)]
 
-g = {}
-for r in range(len(lines)):
-    for c in range(len(lines[r])):
-        g[(r,c)] = lines[r][c]
+def dijkstra(risks):
+    best = [[math.inf] * len(row) for row in risks]
+    best[0][0] = 0
+    queue = []
+    heapq.heappush(queue, (0, 0))
+    while True:
+        r, c = heapq.heappop(queue)
+        cost = best[r][c]
+        if r == len(risks) - 1 and c == len(risks[r]) - 1:
+            return cost
+        abj = [(r, c - 1), (r - 1, c), (r, c + 1), (r + 1, c)]
+        for nr, nc in abj:
+            if nr not in range(len(risks)) or nc not in range(len(risks[nr])):
+                continue
+            newcost = cost + risks[nr][nc]
+            if best[nr][nc] > newcost:
+                best[nr][nc] = newcost
+                heapq.heappush(queue, (nr, nc))
 
-#for r in range(len(lines)):
-#    for c in range(len(lines[r])):
-#        for i in range(5):
-#            for j in range(5):
-#                x = lines[r][c] + i + j
-#                g[(r + (i * len(lines)), c + (j * len(lines[0])))] = 1 + x-10 if x >= 10 else x
 
-g[(0, 0)] = 0
-#for r in range(len(lines)*5):
-#    print()
-#    for c in range(len(lines[0])*5):
-#       print(g[(r, c)], end="")
-
-#d = dijkstra(g, len(lines)*5, len(lines[0])*5)
-#print(d.dijkstra(0, 0, len(lines)*5-1, len(lines[0])*5-1))
-
-d = dijkstra(g, len(lines), len(lines[0]))
-print(d.dijkstra(0, 0, len(lines)-1, len(lines[0])-1))
-print("done")
+risks = []
+for dy in range(5):
+    for line in lines:
+        risks.append([(int(char) - 1 + dx + dy) %
+                      9 + 1 for dx in range(5) for char in line.strip()])
+print(dijkstra(risks))

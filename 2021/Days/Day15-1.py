@@ -3,13 +3,14 @@ from typing import Deque
 with open('Python\\Advent-Of-Code\\2021\\Input\\Day15input.txt') as f:
     lines = list(map(lambda x: [int(c) for c in x], f.read().split("\n")))
 
+
 class dijkstra:
     def __init__(self, g, height, width):
         self.g = g
         self.spt = dict.fromkeys(g.keys(), float('inf'))
         self.height = height
         self.width = width
-        
+
     def bfs(self, r, c):
         queue = Deque([(r, c, 0)])
         while len(queue) > 0:
@@ -24,11 +25,12 @@ class dijkstra:
     def dijkstra(self, sr, sc, tr, tc):
         self.bfs(sr, sc)
         return self.spt[(tr, tc)] + self.g[(tr, tc)]
-        
+
+
 g = {}
 for r in range(len(lines)):
     for c in range(len(lines[r])):
-        g[(r,c)] = lines[r][c]
+        g[(r, c)] = lines[r][c]
 g[(0, 0)] = 0
 
 d = dijkstra(g, len(lines), len(lines[0]))
