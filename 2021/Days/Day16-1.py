@@ -15,7 +15,6 @@ def parseOperator(x, packetLength):
         while actualLength < subpacketLength:
             returnedLength = whatPacket(start)
             actualLength += returnedLength
-            # print(actualLength)
             start += returnedLength
         return packetLength
     elif mode == '1':
@@ -40,9 +39,6 @@ def parseLiteral(x, packetLength):
         packetLength += 5
         if group[0] == '0':
             break
-    # packetLength += 4 - packetLength % 4
-    # print(packetLength)
-    #print(int(number, 2))
     return packetLength
 
 
@@ -61,6 +57,5 @@ def whatPacket(x):
         return parseOperator(x+6, packetLength)
 
 
-# print(whatPacket(0))
 whatPacket(0)
 print(versionSum)
