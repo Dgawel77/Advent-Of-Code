@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day4input.txt') as f:
+with open('../Input/Day4input.txt') as f:
     lines = f.readlines()
 
 mark = set()

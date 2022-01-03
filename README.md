@@ -2,7 +2,7 @@
 
 This is a collection of my solutions for diffrent days of Advent of Code, all done in Python.
 
-All solutions work **but** you will have to change the path when reading in the input files.
+All solutions work with Python 3.9.1.
 
 ### Timeline
 

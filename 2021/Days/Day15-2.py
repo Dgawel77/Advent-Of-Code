@@ -4,7 +4,7 @@
 # my first iteration in day one was not very good and took a long time
 # this solution is cleaner and faster
 
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day15input.txt') as f:
+with open('../Input/Day15input.txt') as f:
     lines = f.readlines()
 
 import heapq

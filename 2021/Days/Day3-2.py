@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day3input.txt') as f:
+with open('../Input/Day3input.txt') as f:
     lines = list(map(lambda x: x.strip(), f.readlines()))
 
 

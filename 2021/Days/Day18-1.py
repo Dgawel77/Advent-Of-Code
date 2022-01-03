@@ -4,7 +4,7 @@
 # I did everything using strings and just which is not very efficient. At first I thought of
 # using interloced arrays but that would not work. A tree would have been more efficient.
 
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day18input.txt') as f:
+with open('../Input/Day18input.txt') as f:
     lines = f.read().splitlines()
 
 # a more pythonic way to calculate the magnitude using eval

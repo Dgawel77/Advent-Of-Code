@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day16input.txt') as f:
+with open('../Input/Day16input.txt') as f:
     packet = f.read().strip()
 
 bits = format(int(packet, 16), "0{}b".format(4*len(packet)))

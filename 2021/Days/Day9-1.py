@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day9input.txt') as f:
+with open('../Input/Day9input.txt') as f:
     lines = f.read().split('\n')
 
 

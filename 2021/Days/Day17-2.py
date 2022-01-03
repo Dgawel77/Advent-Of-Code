@@ -3,7 +3,7 @@
 # also that the hits occure before 1000 steps.
 # to make it faster I would use some kind of memoized table
 # or use dynamic programming
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day17input.txt') as f:
+with open('../Input/Day17input.txt') as f:
     lines = f.readlines()
 
 

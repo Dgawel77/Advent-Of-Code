@@ -1,6 +1,6 @@
 from typing import Counter
 
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day5input.txt') as f:
+with open('../Input/Day5input.txt') as f:
     lines = list(map(lambda x: x.strip(), f.readlines()))
 
 cnt = Counter()

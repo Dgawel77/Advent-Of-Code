@@ -1,5 +1,5 @@
 from typing import Counter
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day8input.txt') as f:
+with open('../Input/Day8input.txt') as f:
     lines = f.readlines()
 
 

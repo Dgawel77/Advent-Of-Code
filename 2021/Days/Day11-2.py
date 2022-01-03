@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day11input.txt') as f:
+with open('../Input/Day11input.txt') as f:
     lines = list(map(lambda x: [int(c) for c in x], f.read().splitlines()))
 
 flashed = set()

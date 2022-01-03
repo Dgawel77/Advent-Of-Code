@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day7input.txt') as f:
+with open('../Input/Day7input.txt') as f:
     lines = list(map(int, f.read().split(',')))
 
 minimum = float('inf')

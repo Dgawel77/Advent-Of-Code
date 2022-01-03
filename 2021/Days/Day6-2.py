@@ -1,4 +1,4 @@
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day6input.txt') as f:
+with open('../Input/Day6input.txt') as f:
     lines = list(map(int, f.read().split(',')))
 
 numFish = [0 for _ in range(0, 9)]

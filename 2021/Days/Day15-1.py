@@ -1,6 +1,6 @@
 from typing import Deque
 
-with open('Python\\Advent-Of-Code\\2021\\Input\\Day15input.txt') as f:
+with open('../Input/Day15input.txt') as f:
     lines = list(map(lambda x: [int(c) for c in x], f.read().split("\n")))
 
 
