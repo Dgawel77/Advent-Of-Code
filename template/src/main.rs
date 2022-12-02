@@ -7,11 +7,26 @@ use std::collections::HashMap;
 use std::env;
 use std::fs;
 use std::error::Error;
+use std::io::Write;
 
 fn del_file(day: String) -> Result<(), Box<dyn Error>>{
-    fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/src/bin/day{}-{}.rs", day, 1)).ok();
-    fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/src/bin/day{}-{}.rs", day, 2)).ok();
-    fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/in/day{}input.txt", day)).ok();
+    println!("Are you sure you want to delete all files associated with day {}? (Y | N)", day);
+    print!("> ");
+    std::io::stdout().flush()?;
+    let mut guess_as_string: String = String::with_capacity(64);
+    let _num_bytes_read = std::io::stdin().read_line(&mut guess_as_string)?;
+    match guess_as_string.trim().to_lowercase().as_str(){
+        "y" | "yes" => {
+            // delete all associated files
+            fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/src/bin/day{}-{}.rs", day, 1)).ok();
+            fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/src/bin/day{}-{}.rs", day, 2)).ok();
+            fs::remove_file(format!("C:/Users/David Gawel/OneDrive/Programs/Advent-Of-Code/2022/advent/in/day{}input.txt", day)).ok();
+            println!("Files have been deleted");
+        },
+        _ => {
+            println!("{} Quiting", guess_as_string);
+        }
+    }
     Ok(())
 }
 
