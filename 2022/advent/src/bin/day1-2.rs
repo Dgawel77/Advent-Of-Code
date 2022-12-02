@@ -1,5 +1,4 @@
 use advent::lib;
-use std::cmp;
 
 fn main(){
     let mut max: Vec::<u32> = vec!();
