@@ -9,6 +9,12 @@ pub mod lib{
         Ok(io::BufReader::new(file).lines())
     }
 
+    pub fn read_lines_vec<P>(filename: P) -> Vec<String>
+    where P: AsRef<Path>, {
+        let file = File::open(filename).expect("No Such File Name");
+        io::BufReader::new(file).lines().map(|l| l.expect("Could Not Parse Line")).collect()
+    }
+
     pub fn read_string<P>(filename: P) -> String
     where P: AsRef<Path>, {
         let mut file = File::open(filename).expect("File not found");
