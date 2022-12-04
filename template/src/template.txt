@@ -1,10 +1,8 @@
 use advent::lib;
-use std::io;
 
-fn main() -> Result<(), io::Error>{{
-    let lines: Vec<String> = lib::read_lines_vec("./in/day4input.txt");
+fn main(){{
+    let lines: Vec<String> = lib::read_lines_vec("./in/day{DAY}input.txt");
     for line in lines{{
-
+        
     }}
-    Ok(())
 }}

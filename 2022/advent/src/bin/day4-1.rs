@@ -17,7 +17,6 @@ fn main() -> Result<(), io::Error>{
         if range2.contains(range1.start()) && range2.contains(range1.end()){
             sum += 1;
             continue;
-
         }
     }
     println!("{}", sum);
