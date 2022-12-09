@@ -71,6 +71,7 @@ fn commands(input: &str) -> IResult<&str, Vec<Operation>>{
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct File<'a> {
     size: u32,
     name: &'a str,
@@ -149,8 +150,8 @@ fn main(){
     let answer: u32 = sizes
     .iter()
     .map(|(_, size)| size)
-    .filter(|&&size| size < 100000)
+    .filter(|&&size| size < 100_000)
     .sum();
-    
+
     println!("{}", answer);
 }

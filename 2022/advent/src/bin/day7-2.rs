@@ -71,6 +71,7 @@ fn commands(input: &str) -> IResult<&str, Vec<Operation>>{
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct File<'a> {
     size: u32,
     name: &'a str,
@@ -146,12 +147,12 @@ fn main(){
         }
     }
 
-    let unused_space = 70000000 - sizes[""];
-    let target = 30000000 - unused_space;
+    let unused_space = 70_000_000 - sizes[""];
+    let target = 30_000_000 - unused_space;
     let answer: u32 = sizes
         .iter()
-        .filter(|(_, size)| **size > target)
-        .map(|(_, size)| *size)
+        .filter(|(_, &size)| size > target)
+        .map(|(_, &size)| size)
         .min()
         .unwrap();
     println!("{}", answer);
