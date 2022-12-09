@@ -20,6 +20,6 @@ pub mod lib{
         let mut file = File::open(filename).expect("File not found");
         let mut data = String::new();
         file.read_to_string(&mut data).expect("Error while reading file");
-        data
+        data.replace("\r\n", "\n")
     }
 }
