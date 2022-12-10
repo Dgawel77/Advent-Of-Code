@@ -7,17 +7,23 @@ fn main(){
             .map(|x| x.to_digit(10).unwrap()).collect::<Vec<u32>>()
         )
         .collect();
-    
+    let length: usize = lines.len();
+    let width: usize = lines[0].len();
     let r = 1;
     let c = 2;
-    let this_height = lines[r][c];
-    let left_vis = lines[r][0..c].iter().all(|&other_height| other_height < this_height);
-    let right_vis = lines[r][c+1..width].iter().all(|&other_height| other_height < this_height);
+    let mut scenic_score: usize = 0;
+    let i = lines[r][c];
+    let left_count = lines[r][0..c].iter().rev().take_while(|&&x| x < i).count() + 1;
+    let right_count = lines[r][c+1..width].iter().take_while(|&&x| x < i).count();
     
-    let top_vis = lines[0..r].iter().all(|other_height_vec| other_height_vec[c] < this_height);
-    let bottom_vis = lines[r+1..length].iter().all(|other_height_vec| other_height_vec[c] < this_height);
+    let top_count = lines[0..r].iter().rev().take_while(|x_v| x_v[c] < i).count() + 1;
+    let bottom_count = lines[r+1..length].iter().take_while(|x_v| x_v[c] < i).count();
 
-    dbg!(r, c, this_height, left_vis, right_vis, top_vis, bottom_vis);
+    let tmp_scenic_score = left_count * right_count * top_count * bottom_count;
+    scenic_score = scenic_score.max(tmp_scenic_score);
+    print!("{tmp_scenic_score} ");
+
+    dbg!(left_count, right_count, top_count, bottom_count);
 
     //match left_vis || right_vis || top_vis || bottom_vis{
     //    true => print!("T "),

@@ -13,12 +13,13 @@ fn main(){
     let mut sum: u32 = 0;
     for r in 0..width{
         for c in 0..length{
-            let this_height = lines[r][c];
-            let left_vis = lines[r][0..c].iter().all(|&other_height| other_height < this_height);
-            let right_vis = lines[r][c+1..width].iter().all(|&other_height| other_height < this_height);
+            let i = lines[r][c];
+            let left_vis = lines[r][0..c].iter().all(|&x| x < i);
+            let right_vis = lines[r][c+1..width].iter().all(|&x| x < i);
             
-            let top_vis = lines[0..r].iter().all(|other_height_vec| other_height_vec[c] < this_height);
-            let bottom_vis = lines[r+1..length].iter().all(|other_height_vec| other_height_vec[c] < this_height);
+            let top_vis = lines[0..r].iter().all(|x_v| x_v[c] < i);
+            let bottom_vis = lines[r+1..length].iter().all(|x_v| x_v[c] < i);
+
 
             if left_vis || right_vis || top_vis || bottom_vis{
                 sum += 1;
