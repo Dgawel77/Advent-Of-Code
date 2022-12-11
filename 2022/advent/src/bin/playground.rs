@@ -11,7 +11,7 @@ fn main(){
     let width: usize = lines[0].len();
     let r = 1;
     let c = 2;
-    let mut scenic_score: usize = 0;
+    let mut _scenic_score: usize = 0;
     let i = lines[r][c];
     let left_count = lines[r][0..c].iter().rev().take_while(|&&x| x < i).count() + 1;
     let right_count = lines[r][c+1..width].iter().take_while(|&&x| x < i).count();
@@ -20,7 +20,7 @@ fn main(){
     let bottom_count = lines[r+1..length].iter().take_while(|x_v| x_v[c] < i).count();
 
     let tmp_scenic_score = left_count * right_count * top_count * bottom_count;
-    scenic_score = scenic_score.max(tmp_scenic_score);
+    _scenic_score = _scenic_score.max(tmp_scenic_score);
     print!("{tmp_scenic_score} ");
 
     dbg!(left_count, right_count, top_count, bottom_count);
